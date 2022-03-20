@@ -12,7 +12,7 @@ module PortainerApi
 import PortainerTypes ( PortainerConfig(PortainerConfig) )
 import System.Environment ( getEnv )
 import Control.Lens ( (&), (^.), (.~) )
-import Data.Aeson.Lens ( key, AsPrimitive(_String), AsValue )
+import Data.Aeson.Lens 
 import Data.Aeson ( Value, ToJSON(toJSON) )
 import GHC.Generics ()
 import qualified Data.Text as T

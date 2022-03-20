@@ -28,7 +28,6 @@ dependencies:
   - aeson
   - lens-aeson
   - containers
-  - array
 
 library:
   source-dirs: src
