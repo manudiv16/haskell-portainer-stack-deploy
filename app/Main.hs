@@ -1,18 +1,22 @@
 {-# LANGUAGE BlockArguments #-}
 module Main where
 
-import Lib
-import System.Environment
-import Data.List
-import Text.Printf
+import Lib ()
+import System.Environment ( getEnv )
+import MustacheApi (renderDockerCompose)
 import PortainerApi
+    ( getJwt,
+      getStacks,
+      portaineGetStacks,
+      portainerAuthPost,
+      portainerLogoutPost )
 import PortainerTypes
-import qualified Data.ByteString as B
-import Network.Wreq
+    ( CredentialsAuth(CredentialsAuth),
+      PortainerConfig(PortainerConfig) )
 import Control.Lens
-import Data.Aeson.Lens
-import Data.Map as Map
 import qualified Data.Text as T
+import qualified Data.Text.Lazy.IO as TIO
+
 
 main = do
     user <- getEnv "portainerUser"
@@ -24,6 +28,7 @@ main = do
     resStacks <- portaineGetStacks config jwt
     portainerLogoutPost config jwt
     let stack = getStacks resStacks
-    print "oh"
+    a <-renderDockerCompose "docker-compose.yml" "foo.json" 
+    TIO.putStrLn a
 
 

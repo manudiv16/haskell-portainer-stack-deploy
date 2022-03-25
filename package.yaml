@@ -28,7 +28,7 @@ dependencies:
   - aeson
   - lens-aeson
   - containers
-
+  - stache
 library:
   source-dirs: src
 
